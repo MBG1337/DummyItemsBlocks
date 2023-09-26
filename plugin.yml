@@ -1,4 +1,4 @@
-name: DummyItemsBlocks
+name: BallSacBlocks
 main: diamondgold\DummyItemsBlocks\Main
 description: Registers (non-functional) items and blocks
 version: 1.0.2
