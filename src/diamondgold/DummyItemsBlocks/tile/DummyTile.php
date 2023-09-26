@@ -5,19 +5,19 @@ namespace diamondgold\DummyItemsBlocks\tile;
 use pocketmine\block\tile\Spawnable;
 use pocketmine\item\Item;
 use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\network\mcpe\convert\TypeConverter;
 use pocketmine\VersionInfo;
 
 final class DummyTile extends Spawnable
 {
     protected ?CompoundTag $nbt = null;
 
-    protected function addAdditionalSpawnData(CompoundTag $nbt): void
+    protected function addAdditionalSpawnData(CompoundTag $nbt, TypeConverter $typeConverter): void
     {
-        $this->writeSaveData($nbt); // IDK which tags affect appearance, so just send the whole thing :P
-        // can't override getSpawnCompound()... override id here instead
+        $this->writeSaveData($nbt);
         $id = $this->nbt?->getString(self::TAG_ID, "");
         if (!empty($id)) {
-            $nbt->setString(self::TAG_ID, $id); // TileFactory will write the wrong id, so we need to override it here
+            $nbt->setString(self::TAG_ID, $id);
         }
     }
 
